@@ -1,6 +1,7 @@
 import argparse
 import os
 import subprocess
+import sys
 import threading
 
 
@@ -51,7 +52,7 @@ def run_jobs(exclude_indexing: bool) -> None:
         update_env["PYTHONPATH"] = "."
         update_env["DYNAMIC_CONFIG_DIR_PATH"] = "./dynamic_config_storage"
         update_env["FILE_CONNECTOR_TMP_STORAGE_PATH"] = "./dynamic_config_storage"
-        cmd_indexing = ["python", "danswer/background/update.py"]
+        cmd_indexing = [sys.executable, "danswer/background/update.py"]
 
         indexing_process = subprocess.Popen(
             cmd_indexing,
